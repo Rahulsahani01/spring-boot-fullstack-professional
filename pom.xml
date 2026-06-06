@@ -14,7 +14,7 @@
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>15</java.version>
+		<java.version>17</java.version>
 		<app.image.name>springboot-react-fullstack</app.image.name>
 		<app.image.tag/>
 	</properties>
@@ -27,6 +27,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>1.18.38</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
@@ -208,15 +209,15 @@
 						</configuration>
 						<executions>
 							<execution>
-								<id>install node and npm</id>
-								<goals>
-									<goal>install-node-and-npm</goal>
-								</goals>
-								<configuration>
-									<nodeVersion>v15.4.0</nodeVersion>
-									<npmVersion>7.3.0</npmVersion>
-								</configuration>
-							</execution>
+    <id>install node and npm</id>
+    <goals>
+        <goal>install-node-and-npm</goal>
+    </goals>
+    <configuration>
+        <nodeVersion>v20.19.0</nodeVersion>
+        <npmVersion>10.8.2</npmVersion>
+    </configuration>
+</execution>
 							<execution>
 								<id>npm install</id>
 								<goals>
