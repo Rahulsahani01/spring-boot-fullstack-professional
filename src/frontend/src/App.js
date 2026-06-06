@@ -6,6 +6,7 @@ import ActiveWorkersPage from "./pages/ActiveWorkers/ActiveWorkersPage";
 import AttendanceHistoryPage from "./pages/AttendanceHistory/AttendanceHistoryPage";
 import OvertimeSummaryPage from "./pages/OvertimeSummary/OvertimeSummaryPage";
 import SettlementPage from "./pages/Settlement/SettlementPage";
+import ManagementPage from "./pages/Management/ManagementPage";
 
 import "./App.css";
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/attendance" element={<AttendancePage />} />
         <Route path="/active-workers" element={<ActiveWorkersPage />} />
         <Route path="/attendance-history" element={<AttendanceHistoryPage />} />
+        <Route path="/management" element={<ManagementPage />} />
         <Route path="/overtime" element={<OvertimeSummaryPage />} />
         <Route path="/settlement" element={<SettlementPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />

@@ -9,6 +9,7 @@ import com.example.demo.hrms.attendance.service.AttendanceService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,12 +22,12 @@ public class AttendanceController {
     private final WorkerRepository workerRepository;
 
     @PostMapping("/clock-in")
-    public AttendanceResponse clockIn(@RequestBody ClockInRequest request) {
+    public AttendanceResponse clockIn(@Valid @RequestBody ClockInRequest request) {
         return attendanceService.clockIn(request);
     }
 
     @PostMapping("/clock-out")
-    public AttendanceResponse clockOut(@RequestBody ClockOutRequest request) {
+    public AttendanceResponse clockOut(@Valid @RequestBody ClockOutRequest request) {
         return attendanceService.clockOut(request);
     }
 
@@ -35,6 +36,11 @@ public class AttendanceController {
         return workerRepository.findByActiveTrue().stream()
                 .map(w -> new ActiveWorkerResponse(w.getId(), w.getName(), w.getPhone(), w.getDesignation()))
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("/history")
+    public List<AttendanceResponse> getHistory() {
+        return attendanceService.getAllHistory();
     }
 }
 

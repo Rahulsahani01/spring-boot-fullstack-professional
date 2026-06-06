@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -102,6 +104,19 @@ public class AttendanceService {
                 saved.getClockOutTime(),
                 saved.getOvertimeMinutes()
         );
+    }
+
+    public List<AttendanceResponse> getAllHistory() {
+        return attendanceLogRepository.findAll().stream()
+                .map(log -> new AttendanceResponse(
+                        log.getId(),
+                        log.getWorker().getId(),
+                        log.getSite().getId(),
+                        log.getClockInTime(),
+                        log.getClockOutTime(),
+                        log.getOvertimeMinutes()
+                ))
+                .collect(Collectors.toList());
     }
 }
 
